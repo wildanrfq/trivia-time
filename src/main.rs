@@ -34,16 +34,16 @@ fn main() -> Result<()> {
     println!("Trivia Time - {}", category);
     println!("Question: {}", question);
 
-    let mut final_: HashMap<&str, &str> = HashMap::new();
-    final_.insert("A", &answers[0]);
-    final_.insert("B", &answers[1]);
-    final_.insert("C", &answers[2]);
-    final_.insert("D", &answers[3]);
+    let mut final_answers: HashMap<&str, &str> = HashMap::new();
+    final_answers.insert("A", &answers[0]);
+    final_answers.insert("B", &answers[1]);
+    final_answers.insert("C", &answers[2]);
+    final_answers.insert("D", &answers[3]);
 
     let mut correct_letter = "".to_string();
 
-    for letter in final_.keys().sorted() {
-        println!("{}. {}", letter, final_[letter]);
+    for letter in final_answers.keys().sorted() {
+        println!("{}. {}", letter, final_answers[letter]);
     }
 
     println!("Type the letter [A, B, C or D] of your answer below! (case insensitive)");
@@ -57,10 +57,10 @@ fn main() -> Result<()> {
     let final_answer: &str = &answer;
 
     if letters.contains(&answer) {
-        if final_[final_answer] == correct {
-            println!("You're right!");
+        if final_answers[final_answer] == correct {
+            println!("Congratulations! You're right!");
         } else {
-            for (letter, answer) in final_ {
+            for (letter, answer) in final_answers {
                 if answer == correct {
                     correct_letter.push_str(letter);
                 }
